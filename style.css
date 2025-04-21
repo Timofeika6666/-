@@ -1,97 +1,151 @@
-/* Загальне */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Верховна Рада України</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f6f7f9;
-  color: #1c1c1c;
-  line-height: 1.6;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f9;
+      color: #1a1a1a;
+    }
 
-/* Хедер */
-.main-header {
-  text-align: center;
-  padding: 40px 20px 10px;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
+    header {
+      background: #003366;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
 
-.main-title {
-  font-size: 2.5rem;
-  color: #003366;
-  margin-bottom: 10px;
-}
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
 
-.main-nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-}
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
 
-.main-nav a {
-  text-decoration: none;
-  color: #003366;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s;
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
 
-.main-nav a:hover {
-  color: #0055aa;
-}
+    nav a:hover {
+      background: #0055aa;
+    }
 
-/* Контент */
-.main-content {
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 0 20px;
-}
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
 
-/* Новини */
-.news-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 30px;
-  color: #003366;
-  text-align: center;
-}
+    .hero {
+      background: url('https://rada.gov.ua/images/bg.jpg') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
 
-.news-card {
-  background: white;
-  padding: 20px 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  margin-bottom: 25px;
-  transition: transform 0.3s ease;
-}
+    .hero h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
 
-.news-card:hover {
-  transform: translateY(-4px);
-}
+    .section-title {
+      font-size: 1.8rem;
+      color: #003366;
+      margin-bottom: 20px;
+    }
 
-.news-card h3 {
-  font-size: 1.3rem;
-  color: #1c1c1c;
-  margin-bottom: 10px;
-}
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
 
-.news-card p {
-  color: #444;
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Верховна Рада України</h1>
+    <nav>
+      <a href="#">Головна</a>
+      <a href="#news">Новини</a>
+      <a href="#laws">Закони</a>
+      <a href="#president">Постанови Президента</a>
+      <a href="#members">Керівничий склад</a>
+    </nav>
+  </header>
 
-.date {
-  font-size: 0.9rem;
-  color: #777;
-}
+  <main class="container">
+    <section class="hero">
+      <h2>Офіційний сайт Верховної Ради України</h2>
+      <p>Актуальна інформація, законодавство та діяльність</p>
+    </section>
+
+    <section id="news">
+      <h3 class="section-title">Останні новини</h3>
+      <div class="card">
+        <h4>Новий закон про електронне голосування</h4>
+        <p>Парламент ухвалив законопроєкт про використання електронної системи голосування для майбутніх засідань.</p>
+      </div>
+    </section>
+
+    <section id="laws">
+      <h3 class="section-title">Закони</h3>
+      <div class="card">
+        <h4>Закон №1234-VIII</h4>
+        <p>Про внесення змін до закону України "Про освіту".</p>
+      </div>
+    </section>
+
+    <section id="president">
+      <h3 class="section-title">Постанови Президента</h3>
+      <div class="card">
+        <h4>Указ Президента №2025/45</h4>
+        <p>Про введення в дію рішення РНБО про національну безпеку.</p>
+      </div>
+    </section>
+
+    <section id="members">
+      <h3 class="section-title">Керівничий склад</h3>
+      <div class="card">
+        <h4>Голова Верховної Ради</h4>
+        <p>Ім'я Прізвище — Голова Верховної Ради України</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Верховна Рада України. Всі права захищено.
+  </footer>
+</body>
+</html>
