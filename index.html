@@ -3,38 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Верховна Рада України</title>
+  <title>Новини | Верховна Рада України</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f4f6f9;
+      color: #1a1a1a;
+    }
+
+    header {
+      background: #003366;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #0055aa;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: #003366;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .news-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    .news-card h3 {
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .news-card p {
+      color: #444;
+    }
+
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <header class="main-header">
-    <h1 class="main-title">Верховна Рада України</h1>
-    <nav class="main-nav">
+  <header>
+    <h1>Верховна Рада України</h1>
+    <nav>
       <a href="index.html">Головна</a>
       <a href="news.html">Новини</a>
       <a href="laws.html">Закони</a>
-      <a href="members.html">Депутати</a>
-      <a href="president.html">Президент</a>
+      <a href="president.html">Постанови Президента</a>
+      <a href="members.html">Керівничий склад</a>
     </nav>
   </header>
 
-  <main class="main-content">
-    <section class="news-section">
-      <h2>📰 Останні новини</h2>
+  <main class="container">
+    <h2>Останні новини</h2>
 
-      <article class="news-card">
-        <h3>Прийнято Закон про електронне врядування</h3>
-        <p>Сьогодні Верховна Рада ухвалила новий законопроєкт, який спрощує цифрову комунікацію між громадянами та державою.</p>
-        <span class="date">21 квітня 2025</span>
-      </article>
+    <div class="news-card">
+      <h3>Відбулося засідання Комітету з питань безпеки</h3>
+      <p>На засіданні обговорено стратегічні плани розвитку оборонної політики України на наступні півроку.</p>
+    </div>
 
-      <article class="news-card">
-        <h3>Новий склад комітетів затверджено</h3>
-        <p>На черговому засіданні було затверджено оновлений склад профільних комітетів.</p>
-        <span class="date">20 квітня 2025</span>
-      </article>
-    </section>
+    <div class="news-card">
+      <h3>Ухвалено закон про відкриті дані</h3>
+      <p>Верховна Рада затвердила закон, який сприятиме більшій прозорості у роботі державних органів.</p>
+    </div>
+
+    <div class="news-card">
+      <h3>Розглядається законопроєкт щодо молодіжної політики</h3>
+      <p>Заплановано комплексну реформу державної підтримки молоді, включаючи гранти та освітні програми.</p>
+    </div>
   </main>
+
+  <footer>
+    &copy; 2025 Верховна Рада України. Всі права захищено.
+  </footer>
 </body>
 </html>
