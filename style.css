@@ -32,6 +32,9 @@ nav ul {
     margin: 0;
     display: flex;
     gap: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 nav ul li {
@@ -123,4 +126,3 @@ footer {
 .president-decrees ul li a:hover {
     color: #ffcc00;
 }
-
