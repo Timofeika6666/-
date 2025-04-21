@@ -1,32 +1,76 @@
-body {
-  font-family: Arial, sans-serif;
+* {
   margin: 0;
-  background-color: #f4f4f4;
+  padding: 0;
+  box-sizing: border-box;
 }
-header, footer {
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  line-height: 1.6;
+}
+
+header.hero {
+  background: linear-gradient(rgba(0, 45, 114, 0.85), rgba(0, 45, 114, 0.85)),
+              url('https://upload.wikimedia.org/wikipedia/commons/1/1d/Verkhovna_Rada_building_2021.jpg') center/cover no-repeat;
+  height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+header .overlay {
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  background-color: #0078d4;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #005bb5;
+}
+
+.main-content {
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.main-content .info {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+footer {
   background-color: #002d72;
   color: white;
   text-align: center;
   padding: 20px;
-}
-nav {
-  background-color: #004aad;
-  text-align: center;
-  padding: 10px;
-}
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
-main {
-  padding: 30px;
-}
-.card {
-  background: white;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
