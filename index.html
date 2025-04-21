@@ -3,53 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Верховна Рада Східної України</title>
+  <title>Верховна Рада України</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <div class="logo">
-        <img src="emblem.png" alt="Герб" />
-        <h1>Верховна Рада Східної України</h1>
-      </div>
-      <nav class="nav">
-        <a href="index.html">Головна</a>
-        <a href="laws.html">Закони</a>
-        <a href="news.html">Новини</a>
-        <a href="members.html">Депутати</a>
-        <a href="president.html">Президент</a>
-      </nav>
-    </div>
+  <header class="main-header">
+    <h1 class="main-title">Верховна Рада України</h1>
+    <nav class="main-nav">
+      <a href="index.html">Головна</a>
+      <a href="news.html">Новини</a>
+      <a href="laws.html">Закони</a>
+      <a href="members.html">Депутати</a>
+      <a href="president.html">Президент</a>
+    </nav>
   </header>
 
-  <main class="content container">
+  <main class="main-content">
     <section class="news-section">
-      <h2>Останні новини</h2>
-      <ul>
-        <li>📢 Засідання парламенту 21 квітня 2025 року</li>
-        <li>🗳️ Затверджено нову редакцію Конституції</li>
-      </ul>
-    </section>
+      <h2>📰 Останні новини</h2>
 
-    <section class="laws-section">
-      <h2>Нові законопроєкти</h2>
-      <ul>
-        <li>Про державний бюджет Східної України</li>
-        <li>Про адміністративне управління</li>
-      </ul>
-    </section>
+      <article class="news-card">
+        <h3>Прийнято Закон про електронне врядування</h3>
+        <p>Сьогодні Верховна Рада ухвалила новий законопроєкт, який спрощує цифрову комунікацію між громадянами та державою.</p>
+        <span class="date">21 квітня 2025</span>
+      </article>
 
-    <section class="members-section">
-      <h2>Склад Верховної Ради</h2>
-      <p>Всього депутатів: 32</p>
-      <a href="members.html">Переглянути повний список</a>
+      <article class="news-card">
+        <h3>Новий склад комітетів затверджено</h3>
+        <p>На черговому засіданні було затверджено оновлений склад профільних комітетів.</p>
+        <span class="date">20 квітня 2025</span>
+      </article>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2025 Верховна Рада Східної України. Всі права захищені.</p>
-  </footer>
 </body>
 </html>
