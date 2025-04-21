@@ -1,60 +1,40 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Закони | Ukraine GTA</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Закони | Верховна Рада Східної України</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <div class="container nav-container">
-      <h1>Ukraine GTA</h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Головна</a></li>
-          <li><a href="laws.html">Закони</a></li>
-          <li><a href="members.html">Члени</a></li>
-          <li><a href="news.html">Новини</a></li>
-          <li><a href="president.html">Президент</a></li>
-        </ul>
-      </nav>
-      <button id="themeToggle" class="btn">🌓 Змінити тему</button>
-    </div>
+    <nav class="top-nav">
+      <ul>
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="laws.html">Закони</a></li>
+        <li><a href="members.html">Члени</a></li>
+        <li><a href="news.html">Новини</a></li>
+        <li><a href="president.html">Президент</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <h2>Закони держави</h2>
-      <p>Тут зібрані всі діючі закони та правила, які регулюють життя нашої спільноти.</p>
-      <!-- Можна додати список -->
-      <ul>
-        <li>📘 Закон про вибори</li>
-        <li>📕 Закон про громадянство</li>
-        <li>📗 Конституція</li>
-      </ul>
+  <main class="page-content">
+    <h1>Закони Східної України</h1>
+    <p>Цей розділ містить усі прийняті та чинні закони держави, включаючи конституційні акти, укази та інші правові документи.</p>
+
+    <section class="law-section">
+      <h2>Конституція</h2>
+      <p>Головний документ, який визначає устрій держави, її функції та права громадян.</p>
     </section>
+
+    <section class="law-section">
+      <h2>Кримінальний кодекс</h2>
+      <p>Визначає перелік злочинів і покарання за них.</p>
+    </section>
+
+    <!-- Можна додати більше секцій або списків -->
   </main>
-
-  <footer>
-    <p>&copy; 2025 Ukraine GTA. Всі права захищені.</p>
-  </footer>
-<script>
-  const toggle = document.getElementById('themeToggle');
-  const body = document.body;
-
-  // Зчитати збережену тему
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark');
-  }
-
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    const isDark = body.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  });
-</script>
-
 </body>
 </html>
