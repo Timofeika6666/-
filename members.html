@@ -2,22 +2,78 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Кадровий склад</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кадровий склад - Верховна Рада Східної України</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header><h1>Кадровий склад</h1></header>
-  <nav>
-    <a href="index.html">Головна</a>
-    <a href="news.html">Новини</a>
-    <a href="laws.html">Закони</a>
-    <a href="president.html">Постанови</a>
-  </nav>
-  <main>
-    <div class="card">Голова ВРУ: Іван Коваленко</div>
-    <div class="card">Заступник голови: Ольга Романенко</div>
-    <div class="card">Секретар: Дмитро Литвин</div>
+  <header class="header">
+    <div class="container">
+      <div class="top-bar">
+        <div class="logo-block">
+          <a href="index.html">
+            <img src="https://www.rada.gov.ua/images/logo-rada-ua.png" alt="Герб" height="60">
+            <div class="site-title">
+              <h1>Верховна Рада</h1>
+              <h2>Східної України</h2>
+            </div>
+          </a>
+        </div>
+        <nav class="main-nav">
+          <a href="index.html">Головна</a>
+          <a href="news.html">Новини</a>
+          <a href="laws.html">Законодавство</a>
+          <a href="president.html">Постанови Президента</a>
+          <a href="members.html" class="active">Кадровий склад</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <h2>Кадровий склад Верховної Ради</h2>
+      <p>Офіційний список членів Верховної Ради Східної України.</p>
+
+      <table class="members-table">
+        <thead>
+          <tr>
+            <th>ПІБ</th>
+            <th>Посада</th>
+            <th>Фракція / Комітет</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Іваненко Олексій Сергійович</td>
+            <td>Голова Верховної Ради</td>
+            <td>Безпартійний</td>
+          </tr>
+          <tr>
+            <td>Петренко Марія Володимирівна</td>
+            <td>Перший заступник голови</td>
+            <td>Комітет з прав людини</td>
+          </tr>
+          <tr>
+            <td>Сидоренко Дмитро Ігорович</td>
+            <td>Народний депутат</td>
+            <td>Фінансовий комітет</td>
+          </tr>
+          <tr>
+            <td>Коваленко Тетяна Миколаївна</td>
+            <td>Народний депутат</td>
+            <td>Комітет з освіти</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </main>
-  <footer>&copy; 2025 Верховна Рада Східної України</footer>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Верховна Рада Східної України. Усі права захищено.</p>
+    </div>
+  </footer>
 </body>
 </html>
