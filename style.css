@@ -1,4 +1,4 @@
-/* Основні стилі */
+/* Загальні стилі */
 * {
     margin: 0;
     padding: 0;
@@ -7,44 +7,50 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e6f0ff;
-    color: #2a3d66;
+    background-color: #003366; /* синій фон */
+    color: #fff;
 }
 
 header {
-    background-color: #003366;
-    color: #ffffff;
-    padding: 20px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #002a50; /* темніший синій */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header .logo h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 2em;
+    color: #fff;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 0;
+    display: flex;
+    gap: 20px;
 }
 
 nav ul li {
     display: inline-block;
-    margin: 0 20px;
 }
 
 nav ul li a {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #00579c; /* м'який синій фон для кнопок */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 nav ul li a:hover {
-    color: #ffcc00;
+    background-color: #00497c; /* темніший синій при наведенні */
+    transform: translateY(-2px); /* ефект підйому */
 }
 
 main {
@@ -63,35 +69,11 @@ h2 {
     text-align: center;
 }
 
-section {
-    margin-bottom: 40px;
-}
-
-section ul {
-    list-style-type: none;
-    margin-top: 20px;
-}
-
-section ul li {
-    margin-bottom: 15px;
-    font-size: 1.2em;
-}
-
-section ul li a {
-    color: #003366;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-section ul li a:hover {
-    color: #ffcc00;
-}
-
 footer {
     text-align: center;
     padding: 20px 0;
-    background-color: #003366;
-    color: #ffffff;
+    background-color: #002a50;
+    color: #fff;
     margin-top: 40px;
     font-size: 1em;
     border-top: 2px solid #ffcc00;
@@ -141,3 +123,4 @@ footer {
 .president-decrees ul li a:hover {
     color: #ffcc00;
 }
+
