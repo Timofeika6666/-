@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Новини | Верховна Рада України</title>
+  <title>Головна | Верховна Рада України</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -120,108 +120,6 @@
       transform: translateX(-50%);
     }
     
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      border-radius: 3px;
-    }
-    
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .news-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      transition: all 0.4s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .news-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      border-color: var(--secondary);
-    }
-    
-    .news-img {
-      height: 200px;
-      background: linear-gradient(45deg, var(--primary), var(--dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .news-img::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        to bottom right,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0) 100%
-      );
-      transform: rotate(30deg);
-      animation: shine 3s infinite;
-    }
-    
-    @keyframes shine {
-      0% { transform: rotate(30deg) translate(-30%, -30%); }
-      100% { transform: rotate(30deg) translate(30%, 30%); }
-    }
-    
-    .news-content {
-      padding: 1.5rem;
-    }
-    
-    .news-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--secondary);
-    }
-    
-    .news-card p {
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      color: rgba(255, 255, 255, 0.8);
-    }
-    
-    .read-more {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background: var(--primary);
-      color: white;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border: 2px solid var(--primary);
-    }
-    
-    .read-more:hover {
-      background: transparent;
-      color: var(--primary);
-      border-color: var(--primary);
-    }
-    
     footer {
       background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
       padding: 3rem 0;
@@ -270,40 +168,106 @@
       font-size: 0.9rem;
     }
     
-    /* Анімації */
-    .animate-on-scroll {
+    /* Стилі для кнопки "Наверх" */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--secondary);
+      color: var(--dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
     
-    .animate-on-scroll.visible {
+    .scroll-top.active {
       opacity: 1;
-      transform: translateY(0);
+      visibility: visible;
     }
     
-    /* Адаптивність */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-      
-      h2 {
-        font-size: 1.8rem;
-      }
-      
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      nav {
-        gap: 0.8rem;
-      }
-      
-      nav a {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.9rem;
-      }
+    .scroll-top:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Стилі для головної сторінки */
+    .welcome-section {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .welcome-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .quick-link-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .quick-link-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--secondary);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .quick-link-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+    
+    .quick-link-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .quick-link-desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+    }
+    
+    .quick-link-btn {
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .quick-link-btn:hover {
+      background: var(--secondary);
+      color: var(--dark);
     }
   </style>
 </head>
@@ -314,8 +278,8 @@
     <div class="header-content">
       <h1>Верховна Рада України</h1>
       <nav>
-        <a href="index.html">Головна</a>
-        <a href="news.html" class="active">Новини</a>
+        <a href="index.html" class="active">Головна</a>
+        <a href="news.html">Новини</a>
         <a href="laws.html">Закони</a>
         <a href="president.html">Постанови Президента</a>
         <a href="members.html">Керівничий склад</a>
@@ -324,40 +288,41 @@
   </header>
 
   <main class="container">
-    <h2 class="animate__animated animate__fadeIn">Останні новини</h2>
+    <section class="welcome-section animate__animated animate__fadeIn">
+      <h2>Ласкаво просимо на офіційний сайт</h2>
+      <p class="welcome-text">
+        Верховна Рада України - єдиний орган законодавчої влади в Україні. 
+        Наш сайт надає доступ до офіційної інформації про закони, постанови, 
+        новини та діяльність керівних органів держави.
+      </p>
+    </section>
     
-    <div class="news-grid">
-      <div class="news-card animate-on-scroll">
-        <div class="news-img">
-          <span>Комітет з питань безпеки</span>
+    <div class="quick-links">
+      <div class="quick-link-card">
+        <div class="quick-link-icon">
+          <i class="fas fa-newspaper"></i>
         </div>
-        <div class="news-content">
-          <h3>Відбулося засідання Комітету з питань безпеки</h3>
-          <p>На засіданні обговорено стратегічні плани розвитку оборонної політики України на наступні півроку. Були присутні представники всіх ключових структур.</p>
-          <a href="#" class="read-more">Детальніше</a>
-        </div>
+        <h3 class="quick-link-title">Останні новини</h3>
+        <p class="quick-link-desc">Актуальні події та останні новини з діяльності Верховної Ради</p>
+        <a href="news.html" class="quick-link-btn">Перейти</a>
       </div>
       
-      <div class="news-card animate-on-scroll">
-        <div class="news-img">
-          <span>Закон про відкриті дані</span>
+      <div class="quick-link-card">
+        <div class="quick-link-icon">
+          <i class="fas fa-gavel"></i>
         </div>
-        <div class="news-content">
-          <h3>Ухвалено закон про відкриті дані</h3>
-          <p>Верховна Рада затвердила закон, який сприятиме більшій прозорості у роботі державних органів. Це важливий крок до відкритого суспільства.</p>
-          <a href="#" class="read-more">Детальніше</a>
-        </div>
+        <h3 class="quick-link-title">Законодавство</h3>
+        <p class="quick-link-desc">Повні тексти законів України, останні зміни та нововведення</p>
+        <a href="laws.html" class="quick-link-btn">Перейти</a>
       </div>
       
-      <div class="news-card animate-on-scroll">
-        <div class="news-img">
-          <span>Молодіжна політика</span>
+      <div class="quick-link-card">
+        <div class="quick-link-icon">
+          <i class="fas fa-user-tie"></i>
         </div>
-        <div class="news-content">
-          <h3>Розглядається законопроєкт щодо молодіжної політики</h3>
-          <p>Заплановано комплексну реформу державної підтримки молоді, включаючи гранти та освітні програми. Обговорення триватиме наступного тижня.</p>
-          <a href="#" class="read-more">Детальніше</a>
-        </div>
+        <h3 class="quick-link-title">Керівний склад</h3>
+        <p class="quick-link-desc">Інформація про керівництво держави та їх контактні дані</p>
+        <a href="members.html" class="quick-link-btn">Перейти</a>
       </div>
     </div>
   </main>
@@ -374,34 +339,28 @@
     </div>
   </footer>
 
+  <!-- Кнопка "Наверх" -->
+  <div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
   <script>
-    // Анімація при скролі
-    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    // Кнопка "Наверх"
+    const scrollTopBtn = document.getElementById('scrollTop');
     
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('active');
+      } else {
+        scrollTopBtn.classList.remove('active');
+      }
     });
     
-    animateElements.forEach(el => observer.observe(el));
-    
-    // Видаляємо плавний скрол для зовнішніх посилань
-    document.querySelectorAll('nav a').forEach(anchor => {
-      // Перевіряємо, чи посилання веде на якір (#) чи на іншу сторінку
-      if (anchor.getAttribute('href').startsWith('#')) {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-        });
-      }
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
   </script>
 </body>
