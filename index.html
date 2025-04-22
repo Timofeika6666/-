@@ -6,6 +6,7 @@
   <title>Новини | Верховна Рада України</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
       --primary: #0057b7;
@@ -373,7 +374,6 @@
     </div>
   </footer>
 
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
     // Анімація при скролі
     const animateElements = document.querySelectorAll('.animate-on-scroll');
@@ -391,15 +391,17 @@
     
     animateElements.forEach(el => observer.observe(el));
     
-    // Плавний скрол для навігації
+    // Видаляємо плавний скрол для зовнішніх посилань
     document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+      // Перевіряємо, чи посилання веде на якір (#) чи на іншу сторінку
+      if (anchor.getAttribute('href').startsWith('#')) {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
         });
-      });
+      }
     });
   </script>
 </body>
