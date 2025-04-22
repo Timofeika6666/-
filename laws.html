@@ -4,219 +4,574 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Закони | Верховна Рада України</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
+    :root {
+      --primary: #0057b7;
+      --secondary: #ffd700;
+      --dark: #0c1b33;
+      --light: #f8f9fa;
+      --accent: #e74c3c;
+    }
+    
+    * {
       margin: 0;
-      background: #f4f6f9;
-      color: #1a1a1a;
+      padding: 0;
+      box-sizing: border-box;
     }
-
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+    }
+    
+    .bg-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(0, 87, 183, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 20%);
+      z-index: -1;
+    }
+    
     header {
-      background: #003366;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      padding: 1.5rem 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 100;
     }
-
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, var(--secondary), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
     nav {
       display: flex;
-      justify-content: center;
-      gap: 25px;
+      gap: 1.5rem;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      justify-content: center;
     }
-
+    
     nav a {
       color: white;
       text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      transition: background 0.3s;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
     }
-
+    
     nav a:hover {
-      background: #0055aa;
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
     }
-
+    
+    nav a.active {
+      background: var(--secondary);
+      color: var(--dark);
+      font-weight: 700;
+    }
+    
     .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
     }
-
+    
     h2 {
-      color: #003366;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
       text-align: center;
-      margin-bottom: 30px;
+      background: linear-gradient(to right, var(--secondary), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
     }
-
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+    
+    .laws-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
     .law-card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-
-    .law-card h3 {
-      margin-bottom: 10px;
-      color: #1a1a1a;
+    
+    .law-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      border-color: var(--secondary);
     }
-
-    .law-card p {
-      color: #444;
-    }
-
-    footer {
-      background: #003366;
+    
+    .law-img {
+      height: 180px;
+      background: linear-gradient(45deg, var(--primary), var(--dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: white;
+      font-size: 1.8rem;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 0 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .law-img::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: rotate(30deg) translate(-30%, -30%); }
+      100% { transform: rotate(30deg) translate(30%, 30%); }
+    }
+    
+    .law-content {
+      padding: 1.5rem;
+    }
+    
+    .law-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      min-height: 70px;
+    }
+    
+    .law-card p {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .law-link {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: var(--secondary);
+      color: var(--dark);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--secondary);
+      text-align: center;
+    }
+    
+    .law-link:hover {
+      background: transparent;
+      color: var(--secondary);
+    }
+    
+    footer {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+      padding: 3rem 0;
+      text-align: center;
+      margin-top: 5rem;
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      margin-top: 1.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* Анімації */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Адаптивність */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .laws-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        gap: 0.8rem;
+      }
+      
+      nav a {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      .law-card h3 {
+        min-height: auto;
+      }
+    }
+    
+    /* Стилі для пошуку */
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      position: relative;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      color: white;
+      font-size: 1rem;
+      padding-left: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 2px var(--secondary);
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.7);
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Верховна Рада України</h1>
-    <nav>
-      <a href="index.html">Головна</a>
-      <a href="news.html">Новини</a>
-      <a href="laws.html">Закони</a>
-      <a href="president.html">Постанови Президента</a>
-      <a href="members.html">Керівничий склад</a>
-    </nav>
+  <div class="bg-pattern"></div>
+  
+  <header class="animate__animated animate__fadeInDown">
+    <div class="header-content">
+      <h1>Верховна Рада України</h1>
+      <nav>
+        <a href="index.html">Головна</a>
+        <a href="news.html">Новини</a>
+        <a href="laws.html" class="active">Закони</a>
+        <a href="president.html">Постанови Президента</a>
+        <a href="members.html">Керівничий склад</a>
+      </nav>
+    </div>
   </header>
 
   <main class="container">
-    <h2>Останні Закони</h2>
-
-    <div class="law-card">
-      <h3>Закон "Про Територіальний Центр Комплектування"</h3>
-      <p>ТЦК є структурами військового управління, відповідальними за виконання законодавства, що стосується військової служби, обов’язку, мобілізаційної підготовки та мобілізації. Їхнє створення, реорганізація або ліквідація здійснюється керівництвом Збройних Сил України..</p>
-        <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%A2%D0%B5%D1%80%D0%B8%D1%82%D0%BE%D1%80%D1%96%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9-%D0%A6%D0%B5%D0%BD%D1%82%D1%80-%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F.268684/" target="_blank" rel="noopener noreferrer">Закон "Про Територіальний Центр Комплектування"</a>.</p>
-    </div>
-
-    <div class="law-card">
-      <h3>Кримінальний Кодекс Східної України</h3>
-      <p>Кримінальний кодекс України має своїм завданням правове забезпечення охорони прав і свобод людини і громадянина, власності, громадського порядку та громадської безпеки, довкілля, конституційного устрою України від кримінально-протиправних посягань, забезпечення миру і безпеки людства, а також запобігання кримінальним правопорушенням.</p>
-       <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%9A%D1%80%D0%B8%D0%BC%D1%96%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9-%D0%BA%D0%BE%D0%B4%D0%B5%D0%BA%D1%81-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8.184082/" target="_blank" rel="noopener noreferrer">Кримінальний Кодекс Східної України</a>.</p>
-    </div>
-
-    <div class="law-card">
-      <h3>Конституція Східної України</h3>
-      <p>Головний закон Східної України, яким керується кожен громядянин</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B8%D1%82%D1%83%D1%86%D1%96%D1%8F-%D0%A1%D1%85%D1%96%D0%B4%D0%BD%D0%BE%D1%97-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8.102947/" target="_blank" rel="noopener noreferrer">Конституцію Східної України</a>.</p>
-    </div>
-
-      <div class="law-card">
-      <h3>Кримінальний процесуальний кодекс України</h3>
-      <p>Його завдання захистити особу суспільства та держави від кримінальних правопорушень</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%9A%D1%80%D0%B8%D0%BC%D1%96%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9-%D0%BA%D0%BE%D0%B4%D0%B5%D0%BA%D1%81-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8.124960/" target="_blank" rel="noopener noreferrer">Кримінальний процесуальний кодекс України</a>.</p>
-    </div>
-
-     <div class="law-card">
-      <h3>Кодекс України про адміністративні правопорушення</h3>
-      <p>Завданням Кодексу України про адміністративні правопорушення є охорона прав і свобод громадян</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%9A%D0%BE%D0%B4%D0%B5%D0%BA%D1%81-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8-%D0%BF%D1%80%D0%BE-%D0%B0%D0%B4%D0%BC%D1%96%D0%BD%D1%96%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%96-%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D0%BF%D0%BE%D1%80%D1%83%D1%88%D0%B5%D0%BD%D0%BD%D1%8F.141701/" target="_blank" rel="noopener noreferrer">Кодекс України про адміністративні правопорушення</a>.</p>
+    <h2 class="animate__animated animate__fadeIn">Законодавство України</h2>
+    
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" class="search-input" placeholder="Пошук законів...">
     </div>
     
-    <div class="law-card">
-      <h3>Закон "Про видачу повісток"</h3>
-      <p>Закон яким керується ТЦК та НПУ\СБУ під час видачі повісток</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B2%D0%B8%D0%B4%D0%B0%D1%87%D1%83-%D0%BF%D0%BE%D0%B2%D1%96%D1%81%D1%82%D0%BE%D0%BA.141214/" target="_blank" rel="noopener noreferrer">Закон "Про видачу повісток"</a>.</p>
-    </div>
-
-     <div class="law-card">
-      <h3>Закон "Про Засоби Масової Інформації"</h3>
-      <p>Закон яким керується ЗМІ під час своєї роботи</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%97%D0%B0%D1%81%D0%BE%D0%B1%D0%B8-%D0%9C%D0%B0%D1%81%D0%BE%D0%B2%D0%BE%D1%97-%D0%86%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D1%97.245643/" target="_blank" rel="noopener noreferrer">Закон "про  Засоби Масової Інформації"</a>.</p>
-    </div>
-
-      <div class="law-card">
-      <h3>Закон "Про Верховну Раду України"</h3>
-      <p>Закон яким керується ВРУ під час своєї роботи</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%92%D0%B5%D1%80%D1%85%D0%BE%D0%B2%D0%BD%D1%83-%D0%A0%D0%B0%D0%B4%D1%83-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8.243654/" target="_blank" rel="noopener noreferrer">Закон "Про Верховну Раду України"</a>.</p>
-    </div>
-
-      <div class="law-card">
-      <h3>Закон "Про Державну кримінально-виконавчу службу"</h3>
-      <p>Закон яким керується ДКВСУ під час своєї роботи</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%94%D0%B5%D1%80%D0%B6%D0%B0%D0%B2%D0%BD%D1%83-%D0%BA%D1%80%D0%B8%D0%BC%D1%96%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B2%D0%B8%D0%BA%D0%BE%D0%BD%D0%B0%D0%B2%D1%87%D1%83-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D1%83.243718/" target="_blank" rel="noopener noreferrer">Закон "Про Державну кримінально-виконавчу службу"</a>.</p>
-    </div>
-
-    <div class="law-card">
-      <h3>Закон "Про Українську Залізницю"</h3>
-      <p>Закон яким керується УкрЗалізниця під час своєї роботи</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D1%83-%D0%97%D0%B0%D0%BB%D1%96%D0%B7%D0%BD%D0%B8%D1%86%D1%8E.243728/" target="_blank" rel="noopener noreferrer">Закон "Про УкрЗалізницю"</a>.</p>
-    </div>
-
-  <div class="law-card">
-      <h3>Закон "Про Міністерство Охорони Здоров'я"</h3>
-      <p>Закон яким керується Міністерство Охорони Здоров'я під час своєї роботи</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%9C%D1%96%D0%BD%D1%96%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%BE-%D0%9E%D1%85%D0%BE%D1%80%D0%BE%D0%BD%D0%B8-%D0%97%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D1%8F.241087/" target="_blank" rel="noopener noreferrer">Закон "Міністерство Охорони Здоров'я"</a>.</p>
-    </div>
-
-     <div class="law-card">
-      <h3>Закон "Про Державну службу з надзвичайних ситуацій"</h3>
-      <p>Закон яким керується ДСНС під час своєї роботи</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%94%D0%B5%D1%80%D0%B6%D0%B0%D0%B2%D0%BD%D1%83-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D1%83-%D0%B7-%D0%BD%D0%B0%D0%B4%D0%B7%D0%B2%D0%B8%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D1%85-%D1%81%D0%B8%D1%82%D1%83%D0%B0%D1%86%D1%96%D0%B9.240831/" target="_blank" rel="noopener noreferrer">Закон "ДСНС"</a>.</p>
-    </div>
-
-    <div class="law-card">
-      <h3>Закон "Про закриття кордону Україна-Білорусь у місті Чорнобиль"</h3>
-      <p>Закон про закриття кордону між Україною та Білоруссю</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B7%D0%B0%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F-%D0%BA%D0%BE%D1%80%D0%B4%D0%BE%D0%BD%D1%83-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0-%D0%91%D1%96%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%8C-%D1%83-%D0%BC%D1%96%D1%81%D1%82%D1%96-%D0%A7%D0%BE%D1%80%D0%BD%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C.201733/" target="_blank" rel="noopener noreferrer">Закон "Про закриття кордону Україна-Білорусь у місті Чорнобиль"</a>.</p>
-    </div>
-
-       <div class="law-card">
-      <h3>Закон "Про надання дозволу Національній Поліції України повноваження на відкриття вогню у місті"</h3>
-      <p>Закон який довзоляє відкривати вогонь у місті</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%BD%D0%B0%D0%B4%D0%B0%D0%BD%D0%BD%D1%8F-%D0%B4%D0%BE%D0%B7%D0%B2%D0%BE%D0%BB%D1%83-%D0%9D%D0%B0%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%96%D0%B9-%D0%9F%D0%BE%D0%BB%D1%96%D1%86%D1%96%D1%97-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8-%D0%BF%D0%BE%D0%B2%D0%BD%D0%BE%D0%B2%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F-%D0%BD%D0%B0-%D0%B2%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D0%BE%D0%B3%D0%BD%D1%8E-%D1%83-%D0%BC%D1%96%D1%81%D1%82%D1%96.199307/" target="_blank" rel="noopener noreferrer">Закон " надання дозволу Національній Поліції України повноваження на відкриття вогню у місті"</a>.</p>
-    </div>
-
-     <div class="law-card">
-      <h3>Закон "Про застосування службових тварин"</h3>
-      <p>Закон який довзоляє застосовувати службових тварин</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B7%D0%B0%D1%81%D1%82%D0%BE%D1%81%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D0%BE%D0%B2%D0%B8%D1%85-%D1%82%D0%B2%D0%B0%D1%80%D0%B8%D0%BD.186002/" target="_blank" rel="noopener noreferrer">Закон "Про застосування службових тварин"</a>.</p>
-    </div>
-
-     <div class="law-card">
-      <h3>Закон "Про зупинку транспортних засобів"</h3>
-      <p>Закон про правила та підстави зупинки ТЗ</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B7%D1%83%D0%BF%D0%B8%D0%BD%D0%BA%D1%83-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BD%D0%B8%D1%85-%D0%B7%D0%B0%D1%81%D0%BE%D0%B1%D1%96%D0%B2.183743/" target="_blank" rel="noopener noreferrer">Закон "Закон "Про зупинку транспортних засобів""</a>.</p>
-    </div>
-
-    <div class="law-card">
-      <h3>Закон "Про Департамент внутрішньої безпеки НПУ"</h3>
-      <p>Закон який керує діяльність ДВБ</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%94%D0%B5%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82-%D0%B2%D0%BD%D1%83%D1%82%D1%80%D1%96%D1%88%D0%BD%D1%8C%D0%BE%D1%97-%D0%B1%D0%B5%D0%B7%D0%BF%D0%B5%D0%BA%D0%B8-%D0%9D%D0%9F%D0%A3.181564/" target="_blank" rel="noopener noreferrer">Закон "Закон "Про Департамент внутрішньої безпеки НПУ"</a>.</p>
-    </div>
-
-    <div class="law-card">
-      <h3>Закон "Про спеціальні обмеження та заборони для держслужбовців"</h3>
-      <p>Закон про обмеження та заборони державним службовцям</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D1%81%D0%BF%D0%B5%D1%86%D1%96%D0%B0%D0%BB%D1%8C%D0%BD%D1%96-%D0%BE%D0%B1%D0%BC%D0%B5%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F-%D1%82%D0%B0-%D0%B7%D0%B0%D0%B1%D0%BE%D1%80%D0%BE%D0%BD%D0%B8-%D0%B4%D0%BB%D1%8F-%D0%B4%D0%B5%D1%80%D0%B6%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D0%BE%D0%B2%D1%86%D1%96%D0%B2.163318/" target="_blank" rel="noopener noreferrer">Закон "Закон "Про спеціальні обмеження та заборони для держслужбовців"</a>.</p>
-    </div>
-
-     <div class="law-card">
-      <h3>Закон "Про несення служби на блокпості"</h3>
-      <p>Закон який вказує правила несення служби на блок постах</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%BD%D0%B5%D1%81%D0%B5%D0%BD%D0%BD%D1%8F-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D0%B8-%D0%BD%D0%B0-%D0%B1%D0%BB%D0%BE%D0%BA%D0%BF%D0%BE%D1%81%D1%82%D1%96.142040/" target="_blank" rel="noopener noreferrer">Закон "Закон "Про несення служби на блокпості"</a>.</p>
-    </div>
-
-     <div class="law-card">
-      <h3>Закон "Про звернення громадян"</h3>
-      <p>Закон який вказує, що громадяниин може звернутись до органів та повинен отримати якийсь вирік</p>
-      <p>Перейти на <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B7%D0%B2%D0%B5%D1%80%D0%BD%D0%B5%D0%BD%D0%BD%D1%8F-%D0%B3%D1%80%D0%BE%D0%BC%D0%B0%D0%B4%D1%8F%D0%BD.142039/" target="_blank" rel="noopener noreferrer">Закон "Закон "Про зверння громадян"</a>.</p>
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2025 Верховна Рада України. Всі права захищено.
-  </footer>
-</body>
-</html>
+    <div class="laws-grid">
+      <!-- Закон 1 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Територіальний Центр Комплектування</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про Територіальний Центр Комплектування"</h3>
+          <p>ТЦК є структурами військового управління, відповідальними за виконання законодавства, що стосується військової служби, обов'язку, мобілізаційної підготовки та мобілізації.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%A2%D0%B5%D1%80%D0%B8%D1%82%D0%BE%D1%80%D1%96%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9-%D0%A6%D0%B5%D0%BD%D1%82%D1%80-%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F.268684/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 2 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Кримінальний Кодекс</span>
+        </div>
+        <div class="law-content">
+          <h3>Кримінальний Кодекс Східної України</h3>
+          <p>Має завданням правове забезпечення охорони прав і свобод людини і громадянина, власності, громадського порядку та громадської безпеки.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%9A%D1%80%D0%B8%D0%BC%D1%96%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9-%D0%BA%D0%BE%D0%B4%D0%B5%D0%BA%D1%81-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8.184082/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 3 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Конституція</span>
+        </div>
+        <div class="law-content">
+          <h3>Конституція Східної України</h3>
+          <p>Головний закон Східної України, яким керується кожен громадянин.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B8%D1%82%D1%83%D1%86%D1%96%D1%8F-%D0%A1%D1%85%D1%96%D0%B4%D0%BD%D0%BE%D1%97-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8.102947/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 4 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Кримінальний процес</span>
+        </div>
+        <div class="law-content">
+          <h3>Кримінальний процесуальний кодекс України</h3>
+          <p>Його завдання захистити особу, суспільство та державу від кримінальних правопорушень.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%9A%D1%80%D0%B8%D0%BC%D1%96%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9-%D0%BA%D0%BE%D0%B4%D0%B5%D0%BA%D1%81-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8.124960/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 5 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Адміністративні правопорушення</span>
+        </div>
+        <div class="law-content">
+          <h3>Кодекс України про адміністративні правопорушення</h3>
+          <p>Завданням є охорона прав і свобод громадян, інтересів суспільства і держави.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%9A%D0%BE%D0%B4%D0%B5%D0%BA%D1%81-%D0%A3%D0%BA%D1%80%D0%B1%D0%B0%D1%97%D0%BD%D0%B8-%D0%BF%D1%80%D0%BE-%D0%B0%D0%B4%D0%BC%D1%96%D0%BD%D1%96%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%96-%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D0%BF%D0%BE%D1%80%D1%83%D1%88%D0%B5%D0%BD%D0%BD%D1%8F.141701/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 6 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Повістки</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про видачу повісток"</h3>
+          <p>Закон яким керується ТЦК та НПУ\СБУ під час видачі повісток.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B2%D0%B8%D0%B4%D0%B0%D1%87%D1%83-%D0%BF%D0%BE%D0%B2%D1%96%D1%81%D1%82%D0%BE%D0%BA.141214/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 7 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>ЗМІ</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про Засоби Масової Інформації"</h3>
+          <p>Закон яким керується ЗМІ під час своєї роботи.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%97%D0%B0%D1%81%D0%BE%D0%B1%D0%B8-%D0%9C%D0%B0%D1%81%D0%BE%D0%B2%D0%BE%D1%97-%D0%86%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D1%96%D1%97.245643/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 8 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Верховна Рада</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про Верховну Раду України"</h3>
+          <p>Закон яким керується ВРУ під час своєї роботи.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%92%D0%B5%D1%80%D1%85%D0%BE%D0%B2%D0%BD%D1%83-%D0%A0%D0%B0%D0%B4%D1%83-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8.243654/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 9 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>ДКВСУ</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про Державну кримінально-виконавчу службу"</h3>
+          <p>Закон яким керується ДКВСУ під час своєї роботи.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%94%D0%B5%D1%80%D0%B6%D0%B0%D0%B2%D0%BD%D1%83-%D0%BA%D1%80%D0%B8%D0%BC%D1%96%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D0%B2%D0%B8%D0%BA%D0%BE%D0%BD%D0%B0%D0%B2%D1%87%D1%83-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D1%83.243718/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 10 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>УкрЗалізниця</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про Українську Залізницю"</h3>
+          <p>Закон яким керується УкрЗалізниця під час своєї роботи.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D1%83-%D0%97%D0%B0%D0%BB%D1%96%D0%B7%D0%BD%D0%B8%D1%86%D1%8E.243728/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 11 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>МОЗ</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про Міністерство Охорони Здоров'я"</h3>
+          <p>Закон яким керується Міністерство Охорони Здоров'я.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%9C%D1%96%D0%BD%D1%96%D1%81%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B2%D0%BE-%D0%9E%D1%85%D0%BE%D1%80%D0%BE%D0%BD%D0%B8-%D0%97%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D1%8F.241087/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 12 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>ДСНС</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про ДСНС"</h3>
+          <p>Закон яким керується Державна служба з надзвичайних ситуацій.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%94%D0%B5%D1%80%D0%B6%D0%B0%D0%B2%D0%BD%D1%83-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D1%83-%D0%B7-%D0%BD%D0%B0%D0%B4%D0%B7%D0%B2%D0%B8%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D1%85-%D1%81%D0%B8%D1%82%D1%83%D0%B0%D1%86%D1%96%D0%B9.240831/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 13 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Кордон</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про закриття кордону Україна-Білорусь"</h3>
+          <p>Закон про закриття кордону між Україною та Білоруссю у місті Чорнобиль.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B7%D0%B0%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F-%D0%BA%D0%BE%D1%80%D0%B4%D0%BE%D0%BD%D1%83-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0-%D0%91%D1%96%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%8C-%D1%83-%D0%BC%D1%96%D1%81%D1%82%D1%96-%D0%A7%D0%BE%D1%80%D0%BD%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C.201733/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 14 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Національна Поліція</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про відкриття вогню у місті"</h3>
+          <p>Закон який дозволяє відкривати вогонь у місті.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%BD%D0%B0%D0%B4%D0%B0%D0%BD%D0%BD%D1%8F-%D0%B4%D0%BE%D0%B7%D0%B2%D0%BE%D0%BB%D1%83-%D0%9D%D0%B0%D1%86%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%96%D0%B9-%D0%9F%D0%BE%D0%BB%D1%96%D1%86%D1%96%D1%97-%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B8-%D0%BF%D0%BE%D0%B2%D0%BD%D0%BE%D0%B2%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F-%D0%BD%D0%B0-%D0%B2%D1%96%D0%B4%D0%BA%D1%80%D0%B8%D1%82%D1%82%D1%8F-%D0%B2%D0%BE%D0%B3%D0%BD%D1%8E-%D1%83-%D0%BC%D1%96%D1%81%D1%82%D1%96.199307/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 15 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Службові тварини</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про застосування службових тварин"</h3>
+          <p>Закон який дозволяє застосовувати службових тварин.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B7%D0%B0%D1%81%D1%82%D0%BE%D1%81%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-%D1%81%D0%BB%D1%83%D0%B6%D0%B0%D0%B1%D0%BE%D0%B2%D0%B8%D1%85-%D1%82%D0%B2%D0%B0%D1%80%D0%B8%D0%BD.186002/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 16 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>Транспортні засоби</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про зупинку транспортних засобів"</h3>
+          <p>Закон про правила та підстави зупинки транспортних засобів.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%B7%D1%83%D0%BF%D0%B8%D0%BD%D0%BA%D1%83-%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%BD%D0%B8%D1%85-%D0%B7%D0%B0%D1%81%D0%BE%D0%B1%D1%96%D0%B2.183743/" class="law-link" target="_blank">Перейти до закону</a>
+        </div>
+      </div>
+      
+      <!-- Закон 17 -->
+      <div class="law-card animate-on-scroll">
+        <div class="law-img">
+          <span>ДВБ НПУ</span>
+        </div>
+        <div class="law-content">
+          <h3>Закон "Про Департамент внутрішньої безпеки НПУ"</h3>
+          <p>Закон який керує діяльність ДВБ.</p>
+          <a href="https://forum.ukraine-gta.com.ua/threads/%D0%97%D0%B0%D0%BA%D0%BE%D0%BD-%D0%9F%D1%80%D0%BE-%D0%94%D0%B5%D0%BF%D0%B0%D1%80%D1%82%D0%B0%D0%BC%D0%B5%D0%BD%D1%82-%D0%B2%D0%BD%D1%83%D1%82%D1%80%D1%96%D1%88%D0%BD%D1%8C%D0%BE%D1%97-%D0%B1%D0%B5%D0%B7%D0
